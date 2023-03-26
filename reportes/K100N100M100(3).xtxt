@@ -1,0 +1,219 @@
+===============================================================================
+Version:    v++ v2022.1 (64-bit)
+Build:      SW Build 3524075 on 2022-04-13-17:42:45
+Copyright:  Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Created:    Fri Mar 17 15:40:30 2023
+===============================================================================
+
+-------------------------------------------------------------------------------
+Design Name:             krnl_SUNSAL
+Target Device:           xilinx:u250:gen3x16_xdma_4_1:202210.1
+Target Clock:            300.000000MHz
+Total number of kernels: 1
+-------------------------------------------------------------------------------
+
+Kernel Summary
+Kernel Name  Type  Target              OpenCL Library  Compute Units
+-----------  ----  ------------------  --------------  -------------
+krnl_SUNSAL  c     fpga0:OCL_REGION_0  krnl_SUNSAL     1
+
+
+-------------------------------------------------------------------------------
+OpenCL Binary:     krnl_SUNSAL
+Kernels mapped to: clc_region
+
+Timing Information (MHz)
+Compute Unit   Kernel Name  Module Name                                                                         Target Frequency  Estimated Frequency
+-------------  -----------  ----------------------------------------------------------------------------------  ----------------  -------------------
+krnl_SUNSAL_1  krnl_SUNSAL  entry_proc                                                                          300.300293        821.692688
+krnl_SUNSAL_1  krnl_SUNSAL  load_input_A_Pipeline_load_input_A_loop                                             300.300293        411.015198
+krnl_SUNSAL_1  krnl_SUNSAL  load_input_A                                                                        300.300293        411.015198
+krnl_SUNSAL_1  krnl_SUNSAL  load_input_y_Pipeline_load_input_y_loop                                             300.300293        411.015198
+krnl_SUNSAL_1  krnl_SUNSAL  load_input_y                                                                        300.300293        411.015198
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_lectura_A_outer_loop_lectura_A_inner_loop                   300.300293        497.512451
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_lectura_y_loop                                              300.300293        550.357727
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_norma_frobenius_outer_loop_norma_frobenius_inner_loop       300.300293        426.985474
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_reajuste_A_outer_loop_reajuste_A_inner_loop                 300.300293        429.737885
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_reajuste_y_loop                                             300.300293        429.737885
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_6                                                           300.300293        526.315796
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_7                                                           300.300293        526.315796
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_8                                                           300.300293        526.315796
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_traspuesta_KporN_outer_loop_traspuesta_KpoN_inner_loop      300.300293        497.512451
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_VITIS_LOOP_166_1_VITIS_LOOP_167_2                           300.300293        497.512451
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_producto_NporKporN_outer_loop_producto_NporKporN_inner_l    300.300293        426.985474
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_12                                                          300.300293        833.333313
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_13                                                          300.300293        833.333313
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_producto_vector_NporK_outer_loop_producto_vector_NporK_i_1  300.300293        426.985474
+krnl_SUNSAL_1  krnl_SUNSAL  calc_angle_float_float_s                                                            300.300293        382.701874
+krnl_SUNSAL_1  krnl_SUNSAL  svdBasic_100_100_svdTraits_float_float_Pipeline_off_col                             300.300293        426.985474
+krnl_SUNSAL_1  krnl_SUNSAL  svdBasic_100_100_svdTraits_float_float_Pipeline_off_row                             300.300293        376.931763
+krnl_SUNSAL_1  krnl_SUNSAL  svdBasic_100_100_svdTraits_100_100_float_float_float_float_s                        300.300293        376.931763
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_VITIS_LOOP_183_3_VITIS_LOOP_184_4                           300.300293        451.671173
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_VITIS_LOOP_187_5_VITIS_LOOP_188_6                           300.300293        497.512451
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_traspuesta_NporN_outer_loop_traspuesta_NporN_inner_loop     300.300293        474.383301
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_VITIS_LOOP_193_7_VITIS_LOOP_194_8                           300.300293        474.383301
+krnl_SUNSAL_1  krnl_SUNSAL  calcular_IB1_Pipeline_1                                                             300.300293        465.983246
+krnl_SUNSAL_1  krnl_SUNSAL  calcular_IB1_Pipeline_2                                                             300.300293        465.983246
+krnl_SUNSAL_1  krnl_SUNSAL  calcular_IB1_Pipeline_3                                                             300.300293        526.315796
+krnl_SUNSAL_1  krnl_SUNSAL  calcular_IB1_Pipeline_4                                                             300.300293        833.333313
+krnl_SUNSAL_1  krnl_SUNSAL  calcular_IB1_Pipeline_5                                                             300.300293        833.333313
+krnl_SUNSAL_1  krnl_SUNSAL  calcular_IB1_Pipeline_calculo_S_loop                                                300.300293        426.985474
+krnl_SUNSAL_1  krnl_SUNSAL  producto_NporNporN                                                                  300.300293        426.985474
+krnl_SUNSAL_1  krnl_SUNSAL  producto_NporNporN_1                                                                300.300293        426.985474
+krnl_SUNSAL_1  krnl_SUNSAL  calcular_IB1_Pipeline_sumas_inner_loop                                              300.300293        426.985474
+krnl_SUNSAL_1  krnl_SUNSAL  calcular_IB1_Pipeline_suma_total_loop                                               300.300293        426.985474
+krnl_SUNSAL_1  krnl_SUNSAL  calcular_IB1_Pipeline_vector_C_loop                                                 300.300293        430.663208
+krnl_SUNSAL_1  krnl_SUNSAL  calcular_IB1_Pipeline_Cspc_outer_loop_Cspc_inner_loop                               300.300293        430.663208
+krnl_SUNSAL_1  krnl_SUNSAL  calcular_IB1_Pipeline_IB1_outer_loop_IB1_inner_loop                                 300.300293        426.985474
+krnl_SUNSAL_1  krnl_SUNSAL  calcular_IB1                                                                        300.300293        426.985474
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_VITIS_LOOP_199_9_VITIS_LOOP_200_10                          300.300293        497.512451
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_producto_NporNporK_outer_loop_producto_NporNporK_inner_l    300.300293        426.985474
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_producto_vector_NporK_outer_loop_producto_vector_NporK_i    300.300293        426.985474
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_22                                                          300.300293        833.333313
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_23                                                          300.300293        833.333313
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_24                                                          300.300293        833.333313
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_inicializar_x_loop                                          300.300293        833.333313
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_residuo_u_loop                                              300.300293        833.333313
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_actualizar_u_loop                                           300.300293        426.985474
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_w_loop                                                      300.300293        426.985474
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_actualizar_x_inner_loop                                     300.300293        426.985474
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_actualizar_d_loop                                           300.300293        426.985474
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_res_d_loop                                                  300.300293        426.985474
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_d_res_d_loop                                                300.300293        430.663208
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_d_res_p_loop                                                300.300293        430.663208
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_escritura_x_loop                                            300.300293        550.357727
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL                                                                      300.300293        376.931763
+krnl_SUNSAL_1  krnl_SUNSAL  store_result_x_Pipeline_store_result_x_loop                                         300.300293        411.015198
+krnl_SUNSAL_1  krnl_SUNSAL  store_result_x                                                                      300.300293        411.015198
+krnl_SUNSAL_1  krnl_SUNSAL  krnl_SUNSAL                                                                         300.300293        376.931763
+
+Latency Information
+Compute Unit   Kernel Name  Module Name                                                                         Start Interval        Best (cycles)  Avg (cycles)  Worst (cycles)  Best (absolute)  Avg (absolute)  Worst (absolute)
+-------------  -----------  ----------------------------------------------------------------------------------  --------------------  -------------  ------------  --------------  ---------------  --------------  ----------------
+krnl_SUNSAL_1  krnl_SUNSAL  entry_proc                                                                          0                     0              0             0               0 ns             0 ns            0 ns
+krnl_SUNSAL_1  krnl_SUNSAL  load_input_A_Pipeline_load_input_A_loop                                             10003                 10003          10003         10003           33.340 us        33.340 us       33.340 us
+krnl_SUNSAL_1  krnl_SUNSAL  load_input_A                                                                        10074                 10074          10074         10074           33.577 us        33.577 us       33.577 us
+krnl_SUNSAL_1  krnl_SUNSAL  load_input_y_Pipeline_load_input_y_loop                                             103                   103            103           103             0.343 us         0.343 us        0.343 us
+krnl_SUNSAL_1  krnl_SUNSAL  load_input_y                                                                        174                   174            174           174             0.580 us         0.580 us        0.580 us
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_lectura_A_outer_loop_lectura_A_inner_loop                   10004                 10004          10004         10004           33.343 us        33.343 us       33.343 us
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_lectura_y_loop                                              102                   102            102           102             0.340 us         0.340 us        0.340 us
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_norma_frobenius_outer_loop_norma_frobenius_inner_loop       70011                 70011          70011         70011           0.233 ms         0.233 ms        0.233 ms
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_reajuste_A_outer_loop_reajuste_A_inner_loop                 10018                 10018          10018         10018           33.390 us        33.390 us       33.390 us
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_reajuste_y_loop                                             115                   115            115           115             0.383 us         0.383 us        0.383 us
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_6                                                           10002                 10002          10002         10002           33.337 us        33.337 us       33.337 us
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_7                                                           10002                 10002          10002         10002           33.337 us        33.337 us       33.337 us
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_8                                                           10002                 10002          10002         10002           33.337 us        33.337 us       33.337 us
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_traspuesta_KporN_outer_loop_traspuesta_KpoN_inner_loop      10006                 10006          10006         10006           33.350 us        33.350 us       33.350 us
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_VITIS_LOOP_166_1_VITIS_LOOP_167_2                           10006                 10006          10006         10006           33.350 us        33.350 us       33.350 us
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_producto_NporKporN_outer_loop_producto_NporKporN_inner_l    8000010               8000010        8000010       8000010         26.664 ms        26.664 ms       26.664 ms
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_12                                                          102                   102            102           102             0.340 us         0.340 us        0.340 us
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_13                                                          102                   102            102           102             0.340 us         0.340 us        0.340 us
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_producto_vector_NporK_outer_loop_producto_vector_NporK_i_1  80010                 80010          80010         80010           0.267 ms         0.267 ms        0.267 ms
+krnl_SUNSAL_1  krnl_SUNSAL  calc_angle_float_float_s                                                            2 ~ 99                2              67            99              6.666 ns         0.223 us        0.330 us
+krnl_SUNSAL_1  krnl_SUNSAL  svdBasic_100_100_svdTraits_float_float_Pipeline_off_col                             811                   811            811           811             2.703 us         2.703 us        2.703 us
+krnl_SUNSAL_1  krnl_SUNSAL  svdBasic_100_100_svdTraits_float_float_Pipeline_off_row                             812                   812            812           812             2.706 us         2.706 us        2.706 us
+krnl_SUNSAL_1  krnl_SUNSAL  svdBasic_100_100_svdTraits_100_100_float_float_float_float_s                        1682011 ~ 175737871   1682011        undef         175737871       5.606 ms         undef           0.586 sec
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_VITIS_LOOP_183_3_VITIS_LOOP_184_4                           10004                 10004          10004         10004           33.343 us        33.343 us       33.343 us
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_VITIS_LOOP_187_5_VITIS_LOOP_188_6                           10006                 10006          10006         10006           33.350 us        33.350 us       33.350 us
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_traspuesta_NporN_outer_loop_traspuesta_NporN_inner_loop     10004                 10004          10004         10004           33.343 us        33.343 us       33.343 us
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_VITIS_LOOP_193_7_VITIS_LOOP_194_8                           10004                 10004          10004         10004           33.343 us        33.343 us       33.343 us
+krnl_SUNSAL_1  krnl_SUNSAL  calcular_IB1_Pipeline_1                                                             10002                 10002          10002         10002           33.337 us        33.337 us       33.337 us
+krnl_SUNSAL_1  krnl_SUNSAL  calcular_IB1_Pipeline_2                                                             10002                 10002          10002         10002           33.337 us        33.337 us       33.337 us
+krnl_SUNSAL_1  krnl_SUNSAL  calcular_IB1_Pipeline_3                                                             10002                 10002          10002         10002           33.337 us        33.337 us       33.337 us
+krnl_SUNSAL_1  krnl_SUNSAL  calcular_IB1_Pipeline_4                                                             102                   102            102           102             0.340 us         0.340 us        0.340 us
+krnl_SUNSAL_1  krnl_SUNSAL  calcular_IB1_Pipeline_5                                                             102                   102            102           102             0.340 us         0.340 us        0.340 us
+krnl_SUNSAL_1  krnl_SUNSAL  calcular_IB1_Pipeline_calculo_S_loop                                                122                   122            122           122             0.407 us         0.407 us        0.407 us
+krnl_SUNSAL_1  krnl_SUNSAL  producto_NporNporN                                                                  10707                 10707          10707         10707           35.686 us        35.686 us       35.686 us
+krnl_SUNSAL_1  krnl_SUNSAL  producto_NporNporN_1                                                                10707                 10707          10707         10707           35.686 us        35.686 us       35.686 us
+krnl_SUNSAL_1  krnl_SUNSAL  calcular_IB1_Pipeline_sumas_inner_loop                                              705                   705            705           705             2.350 us         2.350 us        2.350 us
+krnl_SUNSAL_1  krnl_SUNSAL  calcular_IB1_Pipeline_suma_total_loop                                               704                   704            704           704             2.346 us         2.346 us        2.346 us
+krnl_SUNSAL_1  krnl_SUNSAL  calcular_IB1_Pipeline_vector_C_loop                                                 107                   107            107           107             0.357 us         0.357 us        0.357 us
+krnl_SUNSAL_1  krnl_SUNSAL  calcular_IB1_Pipeline_Cspc_outer_loop_Cspc_inner_loop                               10007                 10007          10007         10007           33.353 us        33.353 us       33.353 us
+krnl_SUNSAL_1  krnl_SUNSAL  calcular_IB1_Pipeline_IB1_outer_loop_IB1_inner_loop                                 10013                 10013          10013         10013           33.373 us        33.373 us       33.373 us
+krnl_SUNSAL_1  krnl_SUNSAL  calcular_IB1                                                                        123295                123295         123295        123295          0.411 ms         0.411 ms        0.411 ms
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_VITIS_LOOP_199_9_VITIS_LOOP_200_10                          10006                 10006          10006         10006           33.350 us        33.350 us       33.350 us
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_producto_NporNporK_outer_loop_producto_NporNporK_inner_l    8000010               8000010        8000010       8000010         26.664 ms        26.664 ms       26.664 ms
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_producto_vector_NporK_outer_loop_producto_vector_NporK_i    80010                 80010          80010         80010           0.267 ms         0.267 ms        0.267 ms
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_22                                                          102                   102            102           102             0.340 us         0.340 us        0.340 us
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_23                                                          102                   102            102           102             0.340 us         0.340 us        0.340 us
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_24                                                          102                   102            102           102             0.340 us         0.340 us        0.340 us
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_inicializar_x_loop                                          102                   102            102           102             0.340 us         0.340 us        0.340 us
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_residuo_u_loop                                              102                   102            102           102             0.340 us         0.340 us        0.340 us
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_actualizar_u_loop                                           112                   112            112           112             0.373 us         0.373 us        0.373 us
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_w_loop                                                      121                   121            121           121             0.403 us         0.403 us        0.403 us
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_actualizar_x_inner_loop                                     708                   708            708           708             2.360 us         2.360 us        2.360 us
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_actualizar_d_loop                                           117                   117            117           117             0.390 us         0.390 us        0.390 us
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_res_d_loop                                                  716                   716            716           716             2.386 us         2.386 us        2.386 us
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_d_res_d_loop                                                107                   107            107           107             0.357 us         0.357 us        0.357 us
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_d_res_p_loop                                                107                   107            107           107             0.357 us         0.357 us        0.357 us
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_escritura_x_loop                                            102                   102            102           102             0.340 us         0.340 us        0.340 us
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL                                                                      25202776 ~ 211683938  25202776       undef         211683938       84.001 ms        undef           0.706 sec
+krnl_SUNSAL_1  krnl_SUNSAL  store_result_x_Pipeline_store_result_x_loop                                         50103                 50103          50103         50103           0.167 ms         0.167 ms        0.167 ms
+krnl_SUNSAL_1  krnl_SUNSAL  store_result_x                                                                      50174                 50174          50174         50174           0.167 ms         0.167 ms        0.167 ms
+krnl_SUNSAL_1  krnl_SUNSAL  krnl_SUNSAL                                                                         25202777 ~ 211683939  25202847       undef         211684009       84.001 ms        undef           0.706 sec
+
+Area Information
+Compute Unit   Kernel Name  Module Name                                                                         FF      LUT     DSP  BRAM  URAM
+-------------  -----------  ----------------------------------------------------------------------------------  ------  ------  ---  ----  ----
+krnl_SUNSAL_1  krnl_SUNSAL  entry_proc                                                                          3       37      0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  load_input_A_Pipeline_load_input_A_loop                                             1015    135     0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  load_input_A                                                                        1148    644     0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  load_input_y_Pipeline_load_input_y_loop                                             240     125     0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  load_input_y                                                                        374     625     0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_lectura_A_outer_loop_lectura_A_inner_loop                   81      176     0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_lectura_y_loop                                              17      79      0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_norma_frobenius_outer_loop_norma_frobenius_inner_loop       177     253     0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_reajuste_A_outer_loop_reajuste_A_inner_loop                 219     197     0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_reajuste_y_loop                                             171     100     0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_6                                                           16      66      0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_7                                                           16      66      0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_8                                                           16      66      0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_traspuesta_KporN_outer_loop_traspuesta_KpoN_inner_loop      127     165     0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_VITIS_LOOP_166_1_VITIS_LOOP_167_2                           85      176     0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_producto_NporKporN_outer_loop_producto_NporKporN_inner_l    377     463     0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_12                                                          9       57      0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_13                                                          9       57      0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_producto_vector_NporK_outer_loop_producto_vector_NporK_i_1  258     301     0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  calc_angle_float_float_s                                                            1405    2164    0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  svdBasic_100_100_svdTraits_float_float_Pipeline_off_col                             474     462     0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  svdBasic_100_100_svdTraits_float_float_Pipeline_off_row                             7599    28771   0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  svdBasic_100_100_svdTraits_100_100_float_float_float_float_s                        21641   93416   0    48    0
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_VITIS_LOOP_183_3_VITIS_LOOP_184_4                           3281    2347    0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_VITIS_LOOP_187_5_VITIS_LOOP_188_6                           85      176     0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_traspuesta_NporN_outer_loop_traspuesta_NporN_inner_loop     6521    6175    0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_VITIS_LOOP_193_7_VITIS_LOOP_194_8                           3275    2338    0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  calcular_IB1_Pipeline_1                                                             59      1813    0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  calcular_IB1_Pipeline_2                                                             59      1813    0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  calcular_IB1_Pipeline_3                                                             16      66      0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  calcular_IB1_Pipeline_4                                                             9       57      0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  calcular_IB1_Pipeline_5                                                             9       57      0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  calcular_IB1_Pipeline_calculo_S_loop                                                231     3955    0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  producto_NporNporN                                                                  20721   10413   0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  producto_NporNporN_1                                                                20721   6597    0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  calcular_IB1_Pipeline_sumas_inner_loop                                              243     284     0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  calcular_IB1_Pipeline_suma_total_loop                                               114     147     0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  calcular_IB1_Pipeline_vector_C_loop                                                 155     100     0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  calcular_IB1_Pipeline_Cspc_outer_loop_Cspc_inner_loop                               229     197     0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  calcular_IB1_Pipeline_IB1_outer_loop_IB1_inner_loop                                 241     197     0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  calcular_IB1                                                                        89152   62699   0    32    0
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_VITIS_LOOP_199_9_VITIS_LOOP_200_10                          85      176     0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_producto_NporNporK_outer_loop_producto_NporNporK_inner_l    377     463     0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_producto_vector_NporK_outer_loop_producto_vector_NporK_i    258     301     0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_22                                                          9       57      0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_23                                                          9       57      0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_24                                                          9       57      0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_inicializar_x_loop                                          17      68      0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_residuo_u_loop                                              17      68      0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_actualizar_u_loop                                           261     163     0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_w_loop                                                      311     100     0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_actualizar_x_inner_loop                                     201     169     0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_actualizar_d_loop                                           271     100     0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_res_d_loop                                                  311     277     0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_d_res_d_loop                                                155     100     0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_d_res_p_loop                                                155     100     0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL_Pipeline_escritura_x_loop                                            10      79      0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  compute_SUNSAL                                                                      129836  176055  0    208   0
+krnl_SUNSAL_1  krnl_SUNSAL  store_result_x_Pipeline_store_result_x_loop                                         152     215     0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  store_result_x                                                                      286     749     0    0     0
+krnl_SUNSAL_1  krnl_SUNSAL  krnl_SUNSAL                                                                         139568  191982  0    208   0
+-------------------------------------------------------------------------------

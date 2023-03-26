@@ -1,0 +1,11 @@
+# Remote Access by Secure Shell (SSH) - ETHZ
+
+        ServerAliveInterval 300
+        ServerAliveCountMax 12
+
+        Host jumphost.inf.ethz.ch
+            User <user_name>
+
+        Host *.ethz.ch !jumphost.inf.ethz.ch
+            User <user_name>
+            ProxyJump jumphost.inf.ethz.ch

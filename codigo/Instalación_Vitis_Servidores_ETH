@@ -1,0 +1,207 @@
+Instalación Vitis 2022.1 en Ubuntu 20.04.4.LTS con Alveo U250
+-------------------------------------------------------------
+
+sudo apt-get install ocl-icd-opencl-dev libboost-dev libboost-filesystem-dev uuid-dev dkms libprotoc-dev protobuf-compiler libncurses5-dev lsb-release libxml2-dev libyaml-dev
+
+sudo apt-get install ocl-icd-libopencl1 opencl-headers ocl-icd-opencl-dev linux-libc-dev g++ gcc gdb make libopencv-core-dev libopencv-core4.2  libjpeg-dev libpng-dev python3 git dmidecode lsb unzip linux-headers-$(uname -r)
+
+sudo apt-get install libncurses5-dev libstdc++6 libgtk2.0-0 dpkg-dev libtinfo5 libncurses5 libncursesw5-dev libtinfo-dev libstdc++6:i386 libgtk2.0-0:i386 libc6-dev-i386
+
+INSTALACIÓN VITIS 2022.1 EN UBUNTU 20.04.4 LTS
+
+Desde https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vitis/2022-1.html:
+(Teniendo cuidado de estar en la pestaña Vitis (SW Developer)
+
+Descargar el .bin:
+
+	Xilinx Unified Installer 2022.1: Linux Self Extracting Web Installer
+	
+Desde el directorio donde se descargue, dar permisos de ejecución con:
+
+	chmod +x Xilinx_Unified_2022.1_0420_0327_Lin64.bin
+	
+Lanzar el instalador y seguir los pasos que indique con:
+
+	./Xilinx_Unified_2022.1_0420_0327_Lin64.bin
+
+INSTALACIÓN ALVEO U250 EN VITIS 2022.1 EN UBUNTU 20.04.4 LTS
+
+Desde https://www.xilinx.com/products/boards-and-kits/alveo/u250.html#gettingStarted:
+
+Seleccionar 2022.1 -> Ubuntu -> 20.04
+
+Descargar:
+
+	1. XRT: xrt_202210.2.13.466_20.04-amd64-xrt.deb
+	2. DTP deployment: xilinx-u250-gen3x16-xdma_2022.1_2022_0415_2123-all.deb.tar.gz 
+	3. DTP development: xilinx-u250-gen3x16-xdma-4.1-202210-1-dev_1-3512975_all.deb
+
+Instalar:
+
+	1. XRT
+	
+		sudo apt install ./xrt_202210.2.13.466_20.04-amd64-xrt.deb 
+		
+	2. DTP deployment
+		
+		Descomprimir el .tar.gz con tar -xf xilinx-u250-gen3x16-xdma_2022.1_2022_0415_2123-all.deb.tar.gz 
+	
+		sudo apt install ./xilinx-cmc-u200-u250_1.2.23-3395909_all.deb
+		sudo apt install ./xilinx-sc-fw-u200-u250_4.6.20-1.28f0c61_all.deb
+		sudo apt install ./xilinx-u250-gen3x16-base_4-3494623_all.deb
+		sudo apt install ./xilinx-u250-gen3x16-xdma-validate_4.1-3512975_all.deb
+		sudo apt install ./xilinx-u250-gen3x16-xdma-shell_4.1-3494623_all.deb
+	
+	3. DTP development
+	
+		sudo apt install ./xilinx-u250-gen3x16-xdma-4.1-202210-1-dev_1-3512975_all.deb 
+		
+OPEN VITIS 2022.1 IN UBUNTU 20.04.4 LTS
+
+Go to /tools/Xilinx_2022.1/Vitis/2022.1 and open a terminal:
+
+	source settings64.sh
+	vitis
+
+Aceleración con Pragmas y Refactorizaciones de Código sobre el algoritmo SUNSAL en Vitis HLS
+--------------------------------------------------------------------------------------------
+
+1. Mejora en la legibilidad de los Reportes de Síntesis y Análisis de las herramientas que ofrece Vitis para facilitar la Aceleración sobre Hardware
+
+    - Vitis Analyzer (Acceso desde el Compile Summary)
+
+        Permite ver un reporte con las estimaciones de latencias, ciclos, frecuencia de reloj, uso de BRAM, LUT, etcétera (Kernel Estimate). Además, muestra las paradas del pipeline y los bucles que no ha podido desenrrollar (Kernel Guidance), y un detallado reporte de la síntesis realizada (HLS Synthesis) hasta nivel de operación hardware, desglosado por bucles y funciones.
+
+    - Vitis HLS (Acceso desde el Kernel)
+
+        Permite ver un resumen interactivo de los anteriores reportes, y adicionalmente crea un proyecto entero de Vitis HLS que permite hacer mejoras de manera sencilla directamente en el código fuente. También proporciona un árbol de llamadas en el Kernel, un grafo del Dataflow, y por último una gráfica por pasos de control de todo el algoritmo, que permite depurar los errores de Control Flow fácilmente.
+
+    Para que sea más fácil analizar el algoritmo SUNSAL en Vitis HLS, se ha puesto un nombre identificativo a cada bucle y sección de código poniendo dos puntos delante de las respectivas declaraciones.
+
+    Ejemplo: 
+
+    reajuste_A_outer_loop: for(int i = 0; i < K; i++)
+		reajuste_A_inner_loop: for(int j = 0; j < N; j++)
+			A[i][j] = A[i][j] / norm_f;
+
+    Por último, para obtener valores que estimen la latencia global del algoritmo SUNSAL, se ha introducido el Pragma LOOP_TRIPCOUNT en el bucle principal, y se ha refactorizado para que tenga la forma de un bucle for, y no un bucle while.
+
+    main_loop: for (int iters = 1; iters < M; iters++) {
+				#pragma HLS loop_tripcount min = c_M max = c_M
+				if (!((res_d > tol) || (res_d < 0 - tol) || (res_p > tol) || (res_p < 0 - tol)))
+					break;
+
+2. Detección de los cuellos de botella, las latencias más altas y las dependencias que generan Paradas de Pipeline
+
+    Secciones de código, funciones y bucles con más latencia (para matriz 500 x 500):
+
+        - Productos de Matrices (n³) (3.3 s)
+
+            producto_NporKporN
+            producto_NporNporK
+            producto_NporNporN (esta es la más IMPORTANTE, pues es la única que se ejecuta repetidamente con cada iteración!!)
+
+        - Bucles con dependencias LDE y paradas de Pipeline (11 ns)
+
+            suma_total_loop (y semejantes)
+            res_p_loop
+            res_d_loop
+            actualizar_x_outer_loop, actualizar_x_inner_loop
+
+3. Aceleración del producto de matrices N x N (3.3 s -> 0.845 ms. 6% LUT -> 25% LUT)
+
+    Ryan Kastner, Janarbek Matai y Stephen Neuendorffer. Parallel Programming for FPGAs. 5/10/2022. Capítulo 7. (INCREIBLE LIBRO!!)
+
+    static void producto_NporNporN(float A[N][N], float B[N][N], float R[N][N]) {
+	#pragma HLS array_reshape variable=A complete dim=2
+	#pragma HLS array_reshape variable=B complete dim=1
+	producto_NporNporN_outer_loop: for (int i = 0; i < N; i++) {
+		producto_NporNporN_inner_loop: for (int j = 0; j < N; j++) {
+			#pragma HLS pipeline II=1
+			float Rij = 0;
+			producto_NporNporN_innermost_loop: for (int k = 0; k < N; k++)
+				Rij += A[i][k] * B[k][j];
+			R[i][j] = Rij;
+		}
+	}
+
+4. Busqueda de Estrategias para evitar Paradas de Pipeline en bucles con Dependencias LDE (11 us -> 1.6 us)
+
+    - Pragma LOOP_MERGE para juntar los bucles res_p_loop y res_d_loop. Así, se reducen la latencia de ambos bucles por separado, y se evitan Paradas de Pipeline producidas por riesgos LDE. (2x1!!!)
+
+        residuos: {
+            #pragma HLS loop_merge
+
+            // residuo primal (x - z)
+
+            res_p = 0;
+            res_p_loop: for(int i = 0; i < N; i++) {
+                res_p += (x_sol[i] - u[i]) * (x_sol[i] - u[i]);
+            }
+            res_p = hls::sqrt(res_p);
+
+            // residuo dual (u - u_0)
+
+            res_d = 0;
+            res_d_loop: for(int i = 0; i < N; i++)
+                res_d += (u[i] - u_0[i]) * (u[i] - u_0[i]);
+            res_d = mu * hls::sqrt(res_d);
+
+		}
+
+    - Para suma_total_loop, actualizar_x_outer_loop y actualizar_x_inner_loop hay varias opciones. Una es forzar a que no haya paradas de pipeline con Pragma PIPELINE II=1, lo cual aumenta una barbaridad el consumo de hardware (NO VIABLE Y NO MERECE LA PENA pues 11 us NO ES EXCESIVO!!!). 
+
+    Para el resto del código, o bien Vitis ya hace una optimización muy buena (que para mejorarla hay que consumir mucho Hardware adicional), o bien se pueden hacer retoques que no merecen la pena (en mi opinion) porque habría que meterse en particiones de memoria ad-hoc hechas a mano que darían cada una para hacer un TFG solo de ella, técnicas específicas, etcétera.
+
+Build en Hardware con Vitis IDE y Uso de los Servidores de Alveo de ETH 
+---------------------------------------------------------------------
+
+1. Investigación y Comprensión del Flujo de Trabajo para hacer el Build en Hardware con Vitis entre el Host y el Kernel
+
+    https://github.com/Xilinx/Vitis-Tutorials
+
+    En concreto, cambiado Alveo U200 por Alveo U250:
+
+        After changing into the target build directory, enter the following commands to build the host application and device binary:
+
+        g++ -g -std=c++17 -Wall -O0 ../../src/host.cpp -o ./app.exe -I$XILINX_XRT/include/ -L$XILINX_XRT/lib -lxrt_coreutil -pthread
+        v++ -c -t hw --platform xilinx_u200_gen3x16_xdma_2_202110_1 --config ../../src/u200.cfg -k vadd -I../../src ../../src/vadd.cpp -o ./vadd.xo 
+        v++ -l -t hw --platform xilinx_u200_gen3x16_xdma_2_202110_1 --config ../../src/u200.cfg ./vadd.xo -o ./vadd.xclbin
+
+        To target Hardware, the v++ -t option is set to hw and the emconfigutil command is not needed, as you will be running on an actual hardware platform rather than an emulated platform. All other options remain identical.
+
+        Building for hardware targets can take a couple of hours, or more significant time depending on the design complexity, the machine you are building on, and its current workload.
+
+        After the build completes you can run the application on a system with the Alveo U200 Data Center accelerator card using the following command:
+
+        ./app.exe
+
+        NOTE: Make sure to run the program on a server where the Alveo card is installed. If you built the application on a different machine, you will need to source the /opt/xilinx/xrt/setup.sh script after connecting to the desired server and before running the above command.
+
+        You should see the same TEST PASSED message indicating that the run completed successfully. If you look in the u200/hw folder you will see some of the files that were created during this build and run process. Refer to Targeting Software Emulation for a brief explanation of the different files.
+
+        Congratulations!! You have just completed your first run of a Vitis accelerated application on the Alveo U200 card!
+
+2. Manejo de los Servidores de ETH para el uso de la placa Alveo U250
+
+    https://github.com/fpgasystems/hacc (ATENCIÓN AL PROMETEDOR APARTADO CLI!!!)
+
+    - Hacer la reserva desde la páginacorrespondiente (conectado desde la VPN de ETH).
+    
+    - En tu carpeta HOME, incluir el archivo .ssh/config con el sigueinte contenido, que permite atravesar el PROXY jumphost.ethz.ch:
+
+        # Remote Access by Secure Shell (SSH) - ETHZ
+
+        ServerAliveInterval 300
+        ServerAliveCountMax 12
+
+        Host jumphost.inf.ethz.ch
+            User enrrey
+
+        Host *.ethz.ch !jumphost.inf.ethz.ch
+            User enrrey
+            ProxyJump jumphost.inf.ethz.ch
+
+    - Una vez hecha la reserva, hacer ssh <user>@<nombre_del_servidor (por ejemplo alveo-build-01 que es el que está por defecto)>.ethz.ch. Te pedirá la contraseña del jumphost y la contraseña de ETH para el servidor concreto, haciendo el redireccionamiento directamente.
+
+    - Hacer un scp con el proyecto (incluyendo el .exe generado en el Build en Hardware).
